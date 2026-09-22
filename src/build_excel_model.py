@@ -101,7 +101,7 @@ def build():
     named_rows["Shopping_CPM"] = ws.max_row
 
     ws.append([])
-    ws.append(["-- Campaign assumptions (illustrative — replace before any resume claim) --"])
+    ws.append(["-- Campaign assumptions (illustrative — replace before using for a spend decision) --"])
     ws.cell(row=ws.max_row, column=1).font = LABEL_FONT
     add_row("Fixed campaign cost", b[("Assumption", "fixed_campaign_cost_inr")][0], "INR",
             "ASSUMPTION — not sourced", b[("Assumption", "fixed_campaign_cost_inr")][2])

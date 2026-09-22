@@ -22,13 +22,6 @@ The Python model (`src/campaign_model.py`) and a live-formula Excel workbook
 agree to the cent after the Excel workbook was recalculated headlessly (LibreOffice) — 0.9430x and
 4.2908x, both implementations.
 
-## Resume-ready line
-
-*"Built a campaign ROI and break-even simulator sourced from published 2026 India digital-ad
-benchmarks, returning break-even spend and incremental ROAS by channel (Display 0.94x vs. Shopping
-4.29x at INR 500K spend), cross-validated between an independent Python model and a live-formula
-Excel workbook."*
-
 ## What this is not
 
 Not built against any real client's campaign data — CPM is derived, not directly disclosed by any

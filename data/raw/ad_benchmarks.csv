@@ -1,19 +1,19 @@
 channel,metric,value,unit,source,notes,confidence
-Display,CTR,0.46,pct,"WebFX — 2026 Google Ads Benchmarks",Global average display CTR,confirmed_this_session
-Display,CVR,0.57,pct,"WebFX — 2026 Google Ads Benchmarks",Global average display conversion rate (of clicks),confirmed_this_session
-Display,CPC_global_usd,0.63,USD,"WebFX — 2026 Google Ads Benchmarks",Global average display CPC,confirmed_this_session
-Display,India_CPC_discount_low,70,pct,"OwlClaw — PPC Benchmarks India 2026","India CPCs reported 70-85% lower than US averages",confirmed_this_session
-Display,India_CPC_discount_high,85,pct,"OwlClaw — PPC Benchmarks India 2026","India CPCs reported 70-85% lower than US averages",confirmed_this_session
-Shopping,CTR,5.75,pct,"OwlClaw — PPC Benchmarks India 2026","India search-campaign CTR range 4.5-7%25, midpoint used as proxy for sponsored/shopping placements",confirmed_this_session
-Shopping,CVR,1.91,pct,"Store Growers — Google Shopping Ads Benchmarks 2026","Global average Shopping-visitor conversion rate; India-specific not available",confirmed_this_session
-Shopping,CPC_india_low_inr,5,INR,"OwlClaw — Google Shopping Benchmarks 2026",India Google Shopping CPC range,confirmed_this_session
-Shopping,CPC_india_high_inr,15,INR,"OwlClaw — Google Shopping Benchmarks 2026",India Google Shopping CPC range,confirmed_this_session
-FX,USDINR,95.8,rate,"Federal Reserve H.10 release, 14 Sep 2026 (via TradingEconomics/other trackers, 22 Sep 2026 read)",Used only to convert the global $32-35 AOV figure into INR,confirmed_this_session
-Market,AOV_india_overall_usd_low,32,USD,"Social Samosa / Whalesbook, citing 3M+ order analysis, first five months of 2026",India e-commerce blended AOV rose $32 to $35 in the period,confirmed_this_session
-Market,AOV_india_overall_usd_high,35,USD,"Social Samosa / Whalesbook, citing 3M+ order analysis, first five months of 2026",India e-commerce blended AOV rose $32 to $35 in the period,confirmed_this_session
-Market,category_share_fashion_pct,24,pct,"Social Samosa / Whalesbook 2026 order-mix report","Share of orders, not AOV — category-level India AOV not available, documented gap",confirmed_this_session
-Market,category_share_home_pct,21,pct,"Social Samosa / Whalesbook 2026 order-mix report","Share of orders, not AOV",confirmed_this_session
-Market,category_share_electronics_pct,16,pct,"Social Samosa / Whalesbook 2026 order-mix report","Share of orders, not AOV",confirmed_this_session
-Market,category_share_beauty_pct,7,pct,"Social Samosa / Whalesbook 2026 order-mix report","Share of orders, not AOV",confirmed_this_session
-Assumption,fixed_campaign_cost_inr,75000,INR,"ASSUMPTION — not sourced","Illustrative creative production + ad-ops fixed fee; replace with a real rate card figure before any resume claim",assumption_illustrative
+Display,CTR,0.46,pct,"WebFX — 2026 Google Ads Benchmarks",Global average display CTR,source_confirmed
+Display,CVR,0.57,pct,"WebFX — 2026 Google Ads Benchmarks",Global average display conversion rate (of clicks),source_confirmed
+Display,CPC_global_usd,0.63,USD,"WebFX — 2026 Google Ads Benchmarks",Global average display CPC,source_confirmed
+Display,India_CPC_discount_low,70,pct,"OwlClaw — PPC Benchmarks India 2026","India CPCs reported 70-85% lower than US averages",source_confirmed
+Display,India_CPC_discount_high,85,pct,"OwlClaw — PPC Benchmarks India 2026","India CPCs reported 70-85% lower than US averages",source_confirmed
+Shopping,CTR,5.75,pct,"OwlClaw — PPC Benchmarks India 2026","India search-campaign CTR range 4.5-7%25, midpoint used as proxy for sponsored/shopping placements",source_confirmed
+Shopping,CVR,1.91,pct,"Store Growers — Google Shopping Ads Benchmarks 2026","Global average Shopping-visitor conversion rate; India-specific not available",source_confirmed
+Shopping,CPC_india_low_inr,5,INR,"OwlClaw — Google Shopping Benchmarks 2026",India Google Shopping CPC range,source_confirmed
+Shopping,CPC_india_high_inr,15,INR,"OwlClaw — Google Shopping Benchmarks 2026",India Google Shopping CPC range,source_confirmed
+FX,USDINR,95.8,rate,"Federal Reserve H.10 release, 14 Sep 2026 (via TradingEconomics/other trackers, 22 Sep 2026 read)",Used only to convert the global $32-35 AOV figure into INR,source_confirmed
+Market,AOV_india_overall_usd_low,32,USD,"Social Samosa / Whalesbook, citing 3M+ order analysis, first five months of 2026",India e-commerce blended AOV rose $32 to $35 in the period,source_confirmed
+Market,AOV_india_overall_usd_high,35,USD,"Social Samosa / Whalesbook, citing 3M+ order analysis, first five months of 2026",India e-commerce blended AOV rose $32 to $35 in the period,source_confirmed
+Market,category_share_fashion_pct,24,pct,"Social Samosa / Whalesbook 2026 order-mix report","Share of orders, not AOV — category-level India AOV not available, documented gap",source_confirmed
+Market,category_share_home_pct,21,pct,"Social Samosa / Whalesbook 2026 order-mix report","Share of orders, not AOV",source_confirmed
+Market,category_share_electronics_pct,16,pct,"Social Samosa / Whalesbook 2026 order-mix report","Share of orders, not AOV",source_confirmed
+Market,category_share_beauty_pct,7,pct,"Social Samosa / Whalesbook 2026 order-mix report","Share of orders, not AOV",source_confirmed
+Assumption,fixed_campaign_cost_inr,75000,INR,"ASSUMPTION — not sourced","Illustrative creative production + ad-ops fixed fee; replace with a real rate-card figure before using for a spend decision",assumption_illustrative
 Assumption,incrementality_haircut_base_pct,30,pct,"ASSUMPTION — not sourced","Fraction of attributed revenue assumed to have happened anyway without the campaign; a real haircut requires a holdout test",assumption_illustrative

@@ -10,7 +10,7 @@
 | `unit` | pct, USD, INR, or rate |
 | `source` | Citing report |
 | `notes` | Scope/derivation notes |
-| `confidence` | `confirmed_this_session` or `assumption_illustrative` |
+| `confidence` | `source_confirmed` or `assumption_illustrative` |
 
 ## `outputs/tables/funnel_and_sensitivity.csv`
 

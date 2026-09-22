@@ -9,8 +9,8 @@
 - **Benchmarks are national/global averages**, not specific to Tata CLiQ, any single brand, or any
   single product category — real CTR/CVR vary hugely by category and creative quality.
 - **Shopping CVR (1.91%) is a global figure**; no India-specific Shopping conversion-rate benchmark
-  was found this session.
+  was found for this build.
 - **The funnel is linear** (no diminishing returns as spend scales, no auction-price escalation at
   higher spend) — real campaigns see CPMs rise with scale; this model does not capture that.
-- **No number from this project should reach a resume until this file has been re-read and is still
-  accurate.**
+- **Nothing here is current by default.** Benchmark rates move; re-read this file and re-check the
+  source register before quoting any figure from this project.

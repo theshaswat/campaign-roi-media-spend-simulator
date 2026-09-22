@@ -32,7 +32,7 @@ Full sensitivity table: `outputs/tables/funnel_and_sensitivity.csv`.
 
 CTR and CVR sensitivity produce *identical* ROAS deltas (±0.1886 for a ±20% move in either lever) —
 not a bug, but a direct consequence of the funnel being multiplicatively linear in both. Worth
-stating plainly in an interview: in this model shape, which lever "matters more" isn't a modelling
+stating plainly: in this model shape, which lever "matters more" isn't a modelling
 question — it's whichever lever is operationally cheaper to move in a real campaign (creative/targeting
 for CTR vs. landing-page/offer for CVR).
 
