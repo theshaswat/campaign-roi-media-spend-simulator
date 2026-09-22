@@ -1,0 +1,13 @@
+channel,lever,direction,lever_value,incremental_roas,delta_vs_base_roas
+Display,CTR,low,0.368,0.7544,-0.1886
+Display,CTR,high,0.552,1.1316,0.1886
+Display,CVR,low,0.456,0.7544,-0.1886
+Display,CVR,high,0.684,1.1316,0.1886
+Display,Incrementality haircut,low,24.0,1.0238,0.0808
+Display,Incrementality haircut,high,36.0,0.8621,-0.0808
+Shopping,CTR,low,4.6,3.4327,-0.8582
+Shopping,CTR,high,6.9,5.149,0.8582
+Shopping,CVR,low,1.528,3.4327,-0.8582
+Shopping,CVR,high,2.292,5.149,0.8582
+Shopping,Incrementality haircut,low,24.0,4.6586,0.3678
+Shopping,Incrementality haircut,high,36.0,3.923,-0.3678
