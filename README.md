@@ -21,18 +21,18 @@ At ₹500,000 test spend, on sourced India-benchmark assumptions:
 | Display | ₹62.5 | 0.46% | 0.57% | **0.94x** | **Never** — ROAS below 1 at any spend |
 | Shopping / Sponsored | ₹575 | 5.75% | 1.91% | **4.29x** | **₹22,791** |
 
-A channel returning less than 1.0x incremental ROAS does not have a high break-even
-point — it has no break-even point at all, because every additional rupee of spend widens
-the loss rather than amortising the fixed cost. That is the substantive difference between
-the two rows, and it is a property of the sourced click-through and conversion rates, not
-of the model: low-intent display inventory converts far below high-intent shopping and
-search inventory, and the gap is wide enough to cross the line where scale stops helping.
+A channel returning less than 1.0x incremental ROAS has no break-even point at all. Every
+additional rupee of spend widens the loss rather than amortising the fixed cost, so there
+is no spend level at which the ₹75,000 comes back. That follows from the sourced
+click-through and conversion rates rather than from the model: low-intent display
+inventory converts far below high-intent shopping and search inventory, and the gap is
+wide enough to cross the line where scale stops helping.
 
 **CTR and CVR produce identical ROAS deltas** — ±0.1886 for a ±20% move in either lever on
-Display, ±0.8582 on Shopping. This is not a bug. The funnel is multiplicatively linear in
-both, so a proportional change in either moves revenue by the same proportion. The
-practical consequence is that "which lever matters more" is not a modelling question in
-this funnel shape; it is a question of which lever is cheaper to move in a live campaign.
+Display, ±0.8582 on Shopping. The funnel is multiplicatively linear in both, so a
+proportional change in either moves revenue by the same proportion. In a funnel shaped
+like this, "which lever matters more" comes down to which one is cheaper to move in a live
+campaign.
 
 Full reasoning: [`reports/01_RECOMMENDATION_MEMO.md`](reports/01_RECOMMENDATION_MEMO.md).
 One-page version: [`reports/00_EXECUTIVE_SUMMARY.md`](reports/00_EXECUTIVE_SUMMARY.md).
