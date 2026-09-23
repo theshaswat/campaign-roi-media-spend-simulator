@@ -1,0 +1,60 @@
+name: verify
+
+# The only input is data/raw/ad_benchmarks.csv -- published 2026 India ad-tech
+# benchmarks, transcribed with a source per row -- so CI rebuilds everything the
+# repo ships from it and checks the result against what is committed.
+#
+# Three things are compared exactly: the sensitivity table, the Excel model and
+# the five PDFs. None of them contains a chart or anything else that renders
+# differently between machines, so an exact diff is the right test and it catches
+# a figure edited into a report or a workbook without rerunning the model.
+#
+# Two build details make that possible. src/build_pdf.py sets rl_config.invariant,
+# without which reportlab stamps every PDF with the wall clock and a random
+# document ID. src/build_excel_model.py pins the workbook's document timestamps,
+# fixes the zip entry timestamps and stores the archive uncompressed, because
+# deflate output differs between zlib builds; lxml is declared in requirements
+# for the same reason, since openpyxl's fallback serialiser writes different
+# whitespace.
+#
+# The headline figures in the README -- 0.94x Display, 4.29x Shopping, break-even
+# at roughly INR 22,800 -- are printed by the model rather than written to a file,
+# so they are checked against its output instead of by diff.
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+          cache: pip
+
+      - name: Install
+        run: pip install -r requirements.txt
+
+      - name: Rebuild the model, the workbook and the reports
+        working-directory: src
+        run: |
+          python campaign_model.py | tee /tmp/model.txt
+          python build_excel_model.py
+          python build_pdf.py
+
+      - name: Committed outputs reproduce exactly
+        run: git diff --exit-code -- outputs excel_model reports
+
+      - name: The README's headline figures still come out of the model
+        run: |
+          grep -q "incremental ROAS = 0.943x" /tmp/model.txt || { echo "::error::Display ROAS is no longer 0.943x"; exit 1; }
+          grep -q "incremental ROAS = 4.2908x" /tmp/model.txt || { echo "::error::Shopping ROAS is no longer 4.2908x"; exit 1; }
+          grep -q "Break-even spend to recover INR 75,000 fixed cost: 22,791 INR" /tmp/model.txt || { echo "::error::Shopping break-even is no longer 22,791"; exit 1; }
+          grep -q "NEVER" /tmp/model.txt || { echo "::error::Display now clears break-even; the README says it never does"; exit 1; }
+          echo "all four headline figures hold"

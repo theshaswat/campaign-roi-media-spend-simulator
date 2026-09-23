@@ -5,6 +5,10 @@ never a pasted value — so the workbook can't drift from its own source inputs.
 """
 from pathlib import Path
 import csv
+import datetime as dt
+import re
+import shutil
+import zipfile
 from openpyxl import Workbook
 from openpyxl.styles import Font, PatternFill, Alignment
 from openpyxl.utils import get_column_letter
@@ -30,6 +34,39 @@ def style_header(ws, row, n_cols):
         cell = ws.cell(row=row, column=c)
         cell.fill = HEADER_FILL
         cell.font = HEADER_FONT
+
+
+
+# Deterministic build. The date is arbitrary and only needs to be fixed; the
+# dates that carry meaning are the disclosure dates in reports/03_SOURCE_REGISTER.md.
+EPOCH = dt.datetime(2026, 1, 1, 0, 0, 0)
+
+
+def _make_reproducible(path: Path) -> None:
+    """Rewrite the .xlsx so two builds of the same data produce the same bytes.
+
+    Three things vary between runs and none is part of the model. Python's
+    zipfile stamps every entry with the wall clock; openpyxl overwrites
+    dcterms:modified at save time whatever the workbook properties say; and
+    deflate output differs between zlib builds, so identical XML compresses to
+    different bytes on Linux than on macOS. The first two are normalised, the
+    third sidestepped by storing the archive uncompressed. Every sheet's XML is
+    identical either way -- this changes packaging, not content.
+    """
+    tmp = path.with_suffix(".xlsx.tmp")
+    stamp = (EPOCH.year, EPOCH.month, EPOCH.day, EPOCH.hour, EPOCH.minute, EPOCH.second)
+    fixed = EPOCH.strftime("%Y-%m-%dT%H:%M:%SZ").encode()
+    with zipfile.ZipFile(path) as src, zipfile.ZipFile(tmp, "w", zipfile.ZIP_STORED) as dst:
+        for item in sorted(src.infolist(), key=lambda i: i.filename):
+            data = src.read(item.filename)
+            if item.filename == "docProps/core.xml":
+                data = re.sub(rb"(<dcterms:modified[^>]*>)[^<]*(</dcterms:modified>)",
+                              rb"\g<1>" + fixed + rb"\g<2>", data)
+            info = zipfile.ZipInfo(item.filename, date_time=stamp)
+            info.compress_type = zipfile.ZIP_STORED
+            info.external_attr = item.external_attr
+            dst.writestr(info, data)
+    shutil.move(str(tmp), str(path))
 
 
 def build():
@@ -183,7 +220,10 @@ def build():
         sens.column_dimensions[col].width = width
 
     OUT_PATH.parent.mkdir(parents=True, exist_ok=True)
+    wb.properties.created = EPOCH
+    wb.properties.modified = EPOCH
     wb.save(OUT_PATH)
+    _make_reproducible(OUT_PATH)
     print(f"Workbook written -> {OUT_PATH}")
 
 
